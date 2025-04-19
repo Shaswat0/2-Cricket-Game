@@ -10,58 +10,9 @@
     <main>
       <div class="container">
         <h1 style="font-weight: bold">Bat Ball Stump Game</h1>
-        <button
-          class="button"
-          onclick="
-            let computerChoice=getComputerChoice();
-            
-            let result;
-            if(computerChoice==='Ball'){
-                result='Hey, You won!';
-            } else if(computerChoice==='Bat'){
-                result=`It's a Tie!`;
-            } else if(computerChoice==='Stump'){
-                result='Computer Won!';
-            }
-            alert(`You have chosen Bat\nComputer has chosen ${computerChoice}\n${result}`);"
-        >Bat</button>
-
-        <button
-          class="button"
-          onclick="
-        computerChoice=getComputerChoice()
-
-            let result;
-          if (computerChoice === 'Stump') {
-            result = 'Hey, You won!';
-          } else if (computerChoice === 'Ball') {
-            result = `It's a Tie!`;
-          } else if (computerChoice === 'Bat') {
-            result = 'Computer Won!';
-          }
-          alert(`You have chosen Ball\nComputer has chosen ${computerChoice}\n${result}`);
-          "
-        >
-          Ball
-        </button>
-
-        <button
-          class="button"
-          onclick="
-            computerChoice=getComputerChoice()
-         let result;
-        if (computerChoice === 'Bat') {
-          result = 'Hey, You won!';
-        } else if (computerChoice === 'Stump') {
-          result = `It's a Tie!`;
-        } else if (computerChoice === 'Ball') {
-          result = 'Computer Won!';
-        }
-        alert(`You have chosen Stump\nComputer has chosen ${computerChoice}\n${result}`);
-        "
-        >
-          Stump
-        </button>
+        <button class="button" onclick="playGame('Bat')">Bat</button>
+        <button class="button" onclick="playGame('Ball')">Ball</button>
+        <button class="button" onclick="playGame('Stump')">Stump</button>
       </div>
     </main>
     <script>
@@ -76,6 +27,29 @@
           computerChoice = "Stump";
         }
         return computerChoice;
+      }
+
+      function playGame(userChoice) {
+        const computerChoice = getComputerChoice();
+        let result;
+
+        if (userChoice === "Bat") {
+          if (computerChoice === "Ball") result = "Hey, You won!";
+          else if (computerChoice === "Bat") result = "It's a Tie!";
+          else result = "Computer Won!";
+        } else if (userChoice === "Ball") {
+          if (computerChoice === "Stump") result = "Hey, You won!";
+          else if (computerChoice === "Ball") result = "It's a Tie!";
+          else result = "Computer Won!";
+        } else if (userChoice === "Stump") {
+          if (computerChoice === "Bat") result = "Hey, You won!";
+          else if (computerChoice === "Stump") result = "It's a Tie!";
+          else result = "Computer Won!";
+        }
+
+        alert(
+          `You have chosen ${userChoice}\nComputer has chosen ${computerChoice}\n${result}`
+        );
       }
     </script>
   </body>
